@@ -1,4 +1,4 @@
-// This package handles log rotation
+// The logging package provides common functionality as log rotation, conditional debug logging etc.
 package logging
 
 import (
@@ -13,9 +13,15 @@ import (
 var stdoutLog string
 var stderrLog string
 var debugFlag bool
+
+// global logger for debug messages
+//  logging.Debug.Println("debug message")
+// debug messages are printed only when the program is started with -debug flag
 var Debug *log.Logger
 
-func Init() {
+// Init installs the command line options for setting output and error log paths, and exposes
+// logging.Debug, which can be used to add code for debug
+func init() {
   flag.StringVar(&stdoutLog,"l","","log file for stdout")
   flag.StringVar(&stderrLog,"e","","log file for stderr")
   flag.BoolVar(&debugFlag,"debug",false,"enable debug logging")
@@ -33,6 +39,7 @@ func sigHandler(c chan os.Signal) {
   }
 }
 
+// App must call LogInit once to setup log redirection
 func LogInit() {
   log.Println("Log Init: using ",stdoutLog,stderrLog)
   reopen(1,stdoutLog)
