@@ -26,6 +26,8 @@ func init() {
   flag.StringVar(&stderrLog,"e","","log file for stderr")
   flag.BoolVar(&debugFlag,"debug",false,"enable debug logging")
 
+  Debug = log.New(ioutil.Discard,"",0)
+
   c := make(chan os.Signal, 1)
   signal.Notify(c, syscall.SIGHUP) // listen for sighup
   go sigHandler(c)
@@ -45,9 +47,7 @@ func LogInit() {
   reopen(1,stdoutLog)
   reopen(2,stderrLog)
 
-  if !debugFlag {
-    Debug = log.New(ioutil.Discard,"",0)
-  } else {
+  if debugFlag {
     Debug = log.New(os.Stdout,"debug:",log.Ldate|log.Ltime)
     Debug.Println("---- debug mode ----")
   }
