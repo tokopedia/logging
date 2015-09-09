@@ -53,6 +53,10 @@ func LogInit() {
   }
 }
 
+func IsDebug() bool {
+  return debugFlag
+}
+
 func reopen(fd int,filename string) {
   if filename == "" {
     return
