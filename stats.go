@@ -15,6 +15,7 @@ import (
 // go logging.StatsLog()
 func StatsLog() {
 
+  // If we are running in debug mode, do not clog the screen
 	if IsDebug() {
 		return
 	}

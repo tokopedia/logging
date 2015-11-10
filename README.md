@@ -3,4 +3,6 @@ logging
 
 common logging package for go servers
 
-API documentation: https://godoc.org/github.com/tokopedia/logging
+[![GoDoc](https://godoc.org/gopkg.in/tokopedia/logging.v1?status.svg)](https://godoc.org/gopkg.in/tokopedia/logging.v1)
+
+API documentation: https://godoc.org/gopkg.in/tokopedia.com/logging.v1
