@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+// By using StatsLog, you can print stats on stdout every second, which is sometimes handy to check the state
+// of the server. The stats themselves are declared using the "expvar" package
+// to use this function, just before starting your listeners, create a goroutine like this
+// go logging.StatsLog()
 func StatsLog() {
 
 	if IsDebug() {
