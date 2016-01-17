@@ -45,7 +45,10 @@ func sigHandler(c chan os.Signal) {
 
 // App must call LogInit once to setup log redirection
 func LogInit() {
-  log.Println("Log Init: using ",stdoutLog,stderrLog)
+  if stdoutLog != stderrLog && stdoutLog != "" {
+    log.Println("Log Init: using ",stdoutLog,stderrLog)
+  }
+
   reopen(1,stdoutLog)
   reopen(2,stderrLog)
 
@@ -72,5 +75,7 @@ func reopen(fd int,filename string) {
     os.Exit(2)
   }
 
-  syscall.Dup2(int(logFile.Fd()), fd)
+  if err = syscall.Dup2(int(logFile.Fd()), fd); err != nil {
+    log.Println("Failed to dup",filename)
+  }
 }
