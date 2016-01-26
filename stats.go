@@ -17,8 +17,11 @@ func StatsLog() {
 
   // If we are running in debug mode, do not clog the screen
 	if IsDebug() {
+    log.Println("disabling logger in debug mode")
 		return
 	}
+
+  log.Println("starting logger")
 
 	for _ = range time.Tick(time.Second) {
 		var buffer bytes.Buffer

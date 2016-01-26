@@ -53,7 +53,7 @@ func LogInit() {
   reopen(2,stderrLog)
 
   if debugFlag {
-    Debug = log.New(os.Stdout,"debug:",log.Ldate|log.Ltime)
+    Debug = log.New(os.Stdout,"debug:",log.Ldate|log.Ltime|log.Lshortfile)
     Debug.Println("---- debug mode ----")
   }
 }
