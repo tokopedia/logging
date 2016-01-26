@@ -3,7 +3,6 @@ package logging
 import (
   gcfg "gopkg.in/gcfg.v1"
   "os"
-  "log"
 )
 
 func ReadModuleConfig(cfg interface{}, path string, module string) bool {
@@ -12,12 +11,14 @@ func ReadModuleConfig(cfg interface{}, path string, module string) bool {
     environ = "development"
   }
 
+  debug := Debug.Println
+
   fname := path + "/" + module + "." + environ + ".ini"
   err := gcfg.ReadFileInto(cfg,fname)
   if err == nil {
-    log.Println("read config from ", fname)
+    debug("read config from ", fname)
     return true
   }
-  log.Println(err)
+  debug(err)
   return false
 }
