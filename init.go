@@ -6,6 +6,7 @@ package logging
 import (
   "os"
   "syscall"
+  "fmt"
   "flag"
   "log"
   "io/ioutil"
@@ -15,6 +16,7 @@ import (
 var stdoutLog string
 var stderrLog string
 var debugFlag bool
+var versionFlag bool
 
 // global logger for debug messages
 //  logging.Debug.Println("debug message")
@@ -26,6 +28,7 @@ var Debug *log.Logger
 func init() {
   flag.StringVar(&stdoutLog,"l","","log file for stdout")
   flag.StringVar(&stderrLog,"e","","log file for stderr")
+  flag.BoolVar(&versionFlag,"v",false,"binary version")
   flag.BoolVar(&debugFlag,"debug",false,"enable debug logging")
 
   Debug = log.New(ioutil.Discard,"",0)
@@ -45,6 +48,12 @@ func sigHandler(c chan os.Signal) {
 
 // App must call LogInit once to setup log redirection
 func LogInit() {
+
+  if versionFlag == true {
+    fmt.Println(appVersion())
+    os.Exit(0)
+  }
+
   if stdoutLog != stderrLog && stdoutLog != "" {
     log.Println("Log Init: using ",stdoutLog,stderrLog)
   }

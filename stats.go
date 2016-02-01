@@ -7,6 +7,7 @@ import (
 	"log"
 	"strings"
 	"time"
+  "os"
 )
 
 // By using StatsLog, you can print stats on stdout every second, which is sometimes handy to check the state
@@ -22,6 +23,8 @@ func StatsLog() {
 	}
 
   log.Println("starting logger")
+  info := log.New(os.Stdout, "s:", log.Ldate|log.Ltime)
+
 
 	for _ = range time.Tick(time.Second) {
 		var buffer bytes.Buffer
@@ -34,7 +37,7 @@ func StatsLog() {
 				}
 			}
 		})
-		log.Println(buffer.String())
+		info.Println(buffer.String())
 	}
 
 }
