@@ -61,7 +61,12 @@ func LogInit() {
   reopen(1,stdoutLog)
   reopen(2,stderrLog)
 
-  if debugFlag {
+  SetDebug(debugFlag)
+}
+
+func SetDebug(enabled bool) {
+  if enabled {
+    debugFlag = true
     Debug = log.New(os.Stdout,"debug:",log.Ldate|log.Ltime|log.Lshortfile)
     Debug.Println("---- debug mode ----")
   }
