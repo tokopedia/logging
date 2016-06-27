@@ -2,6 +2,7 @@ package logging
 
 import (
   gcfg "gopkg.in/gcfg.v1"
+  "log"
   "os"
 )
 
@@ -19,6 +20,20 @@ func ReadModuleConfig(cfg interface{}, path string, module string) bool {
     debug("read config from ", fname)
     return true
   }
-  debug(err)
+  log.Println(err)
   return false
+}
+
+func MustReadModuleConfig(cfg interface{},paths []string, module string) {
+  res := false
+  for _,path := range paths {
+    res = ReadModuleConfig(cfg,path,module)
+    if res == true {
+      break
+    }
+  }
+
+  if res == false {
+    log.Fatalln("couldn't read config for ",os.Getenv("TKPENV"))
+  }
 }
