@@ -18,7 +18,7 @@ const (
 // of the server. The stats themselves are declared using the "expvar" package
 // to use this function, just before starting your listeners, create a goroutine like this
 // go logging.StatsLog()
-func StatsLogInterval(seconds int) {
+func StatsLogInterval(seconds int, compact bool) {
 
   // If we are running in debug mode, do not clog the screen
 	if IsDebug() {
@@ -35,19 +35,23 @@ func StatsLogInterval(seconds int) {
 	for _ = range time.Tick(sleepTime) {
 		var buffer bytes.Buffer
 		expvar.Do(func(k expvar.KeyValue) {
-			if strings.HasPrefix(k.Key, StatsPrefix) {
-				buffer.WriteString(fmt.Sprintf("[%s %s] ", strings.TrimLeft(k.Key,StatsPrefix), k.Value))
 				// reset stats every nseconds
+        shouldLog := !compact
+        prev := k.Value.String()
 				if v, ok := (k.Value).(*expvar.Int); ok {
-					v.Set(0)
+          if prev != "0" {
+					  v.Set(0)
+            shouldLog = true
+          }
 				}
-			}
+			  if strings.HasPrefix(k.Key, StatsPrefix) && shouldLog {
+				   buffer.WriteString(fmt.Sprintf("[%s %s] ", strings.TrimLeft(k.Key,StatsPrefix), prev))
+			  }
 		})
 		info.Println(buffer.String())
 	}
-
 }
 
 func StatsLog() {
-  StatsLogInterval(1)
+  StatsLogInterval(1,false)
 }
