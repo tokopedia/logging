@@ -5,13 +5,13 @@ import (
 	"expvar"
 	"fmt"
 	"log"
+	"os"
 	"strings"
 	"time"
-  "os"
 )
 
 const (
-  StatsPrefix = "rps"
+	StatsPrefix = "rps"
 )
 
 // By using StatsLog, you can print stats on stdout every second, which is sometimes handy to check the state
@@ -20,23 +20,22 @@ const (
 // go logging.StatsLog()
 func StatsLogInterval(seconds int) {
 
-  // If we are running in debug mode, do not clog the screen
+	// If we are running in debug mode, do not clog the screen
 	if IsDebug() {
-    log.Println("disabling logger in debug mode")
+		log.Println("disabling logger in debug mode")
 		return
 	}
 
-  log.Println("starting logger")
-  info := log.New(os.Stdout, "s:", log.Ldate|log.Ltime)
+	log.Println("starting logger")
+	info := log.New(os.Stdout, "s:", log.Ldate|log.Ltime)
 
-  sleepTime := time.Duration(seconds) * time.Second
-
+	sleepTime := time.Duration(seconds) * time.Second
 
 	for _ = range time.Tick(sleepTime) {
 		var buffer bytes.Buffer
 		expvar.Do(func(k expvar.KeyValue) {
 			if strings.HasPrefix(k.Key, StatsPrefix) {
-				buffer.WriteString(fmt.Sprintf("[%s %s] ", strings.TrimLeft(k.Key,StatsPrefix), k.Value))
+				buffer.WriteString(fmt.Sprintf("[%s %s] ", strings.TrimLeft(k.Key, StatsPrefix), k.Value))
 				// reset stats every nseconds
 				if v, ok := (k.Value).(*expvar.Int); ok {
 					v.Set(0)
@@ -49,5 +48,5 @@ func StatsLogInterval(seconds int) {
 }
 
 func StatsLog() {
-  StatsLogInterval(1)
+	StatsLogInterval(1)
 }

@@ -4,13 +4,13 @@
 package logging
 
 import (
-  "os"
-  "syscall"
-  "fmt"
-  "flag"
-  "log"
-  "io/ioutil"
-  "os/signal"
+	"flag"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 var stdoutLog string
@@ -26,65 +26,68 @@ var Debug *log.Logger
 // Init installs the command line options for setting output and error log paths, and exposes
 // logging.Debug, which can be used to add code for debug
 func init() {
-  flag.StringVar(&stdoutLog,"l","","log file for stdout")
-  flag.StringVar(&stderrLog,"e","","log file for stderr")
-  flag.BoolVar(&versionFlag,"v",false,"binary version")
-  flag.BoolVar(&debugFlag,"debug",false,"enable debug logging")
+	flag.StringVar(&stdoutLog, "l", "", "log file for stdout")
+	flag.StringVar(&stderrLog, "e", "", "log file for stderr")
+	flag.BoolVar(&versionFlag, "v", false, "binary version")
+	flag.BoolVar(&debugFlag, "debug", false, "enable debug logging")
 
-  Debug = log.New(ioutil.Discard,"",0)
+	Debug = log.New(ioutil.Discard, "", 0)
 
-  c := make(chan os.Signal, 1)
-  signal.Notify(c, syscall.SIGHUP) // listen for sighup
-  go sigHandler(c)
+	// if running with socketmaster, reload is really not needed
+	if fd := os.Getenv("EINHORN_FDS"); fd == "" {
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, syscall.SIGHUP) // listen for sighup
+		go sigHandler(c)
+	}
 }
 
 func sigHandler(c chan os.Signal) {
-  // Block until a signal is received.
-  for s := range c {
-    log.Println("Reloading on :", s)
-    LogInit()
-  }
+	// Block until a signal is received.
+	for s := range c {
+		log.Println("Reloading on :", s)
+		LogInit()
+	}
 }
 
 // App must call LogInit once to setup log redirection
 func LogInit() {
 
-  if versionFlag == true {
-    fmt.Println(appVersion())
-    os.Exit(0)
-  }
+	if versionFlag == true {
+		fmt.Println(appVersion())
+		os.Exit(0)
+	}
 
-  if stdoutLog != stderrLog && stdoutLog != "" {
-    log.Println("Log Init: using ",stdoutLog,stderrLog)
-  }
+	if stdoutLog != stderrLog && stdoutLog != "" {
+		log.Println("Log Init: using ", stdoutLog, stderrLog)
+	}
 
-  reopen(1,stdoutLog)
-  reopen(2,stderrLog)
+	reopen(1, stdoutLog)
+	reopen(2, stderrLog)
 
-  if debugFlag {
-    Debug = log.New(os.Stdout,"debug:",log.Ldate|log.Ltime|log.Lshortfile)
-    Debug.Println("---- debug mode ----")
-  }
+	if debugFlag {
+		Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
+		Debug.Println("---- debug mode ----")
+	}
 }
 
 // Determine if we are running in debug mode or not
 func IsDebug() bool {
-  return debugFlag
+	return debugFlag
 }
 
-func reopen(fd int,filename string) {
-  if filename == "" {
-    return
-  }
+func reopen(fd int, filename string) {
+	if filename == "" {
+		return
+	}
 
-  logFile,err := os.OpenFile(filename, os.O_WRONLY | os.O_CREATE | os.O_APPEND, 0644)
+	logFile, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 
-  if (err != nil) {
-    log.Println("Error in opening ",filename,err)
-    os.Exit(2)
-  }
+	if err != nil {
+		log.Println("Error in opening ", filename, err)
+		os.Exit(2)
+	}
 
-  if err = syscall.Dup2(int(logFile.Fd()), fd); err != nil {
-    log.Println("Failed to dup",filename)
-  }
+	if err = syscall.Dup2(int(logFile.Fd()), fd); err != nil {
+		log.Println("Failed to dup", filename)
+	}
 }
