@@ -33,9 +33,12 @@ func init() {
 
   Debug = log.New(ioutil.Discard,"",0)
 
+	// if running with socketmaster, reload is really not needed
+	if fd := os.Getenv("EINHORN_FDS"); fd == "" {
   c := make(chan os.Signal, 1)
   signal.Notify(c, syscall.SIGHUP) // listen for sighup
   go sigHandler(c)
+	}
 }
 
 func sigHandler(c chan os.Signal) {
