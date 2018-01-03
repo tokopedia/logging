@@ -2,6 +2,7 @@ package logging
 
 import (
 	gcfg "gopkg.in/gcfg.v1"
+	"log"
 	"os"
 )
 

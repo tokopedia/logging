@@ -55,7 +55,3 @@ func StatsLogInterval(seconds int, compact bool) {
 func StatsLog() {
 	StatsLogInterval(1, false)
 }
-
-func StatsLog() {
-	StatsLogInterval(1)
-}
