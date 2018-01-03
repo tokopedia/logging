@@ -28,7 +28,7 @@ var Debug *log.Logger
 func init() {
 	flag.StringVar(&stdoutLog, "l", "", "log file for stdout")
 	flag.StringVar(&stderrLog, "e", "", "log file for stderr")
-	flag.BoolVar(&versionFlag, "v", false, "binary version")
+	flag.BoolVar(&versionFlag, "version", false, "binary version")
 	flag.BoolVar(&debugFlag, "debug", false, "enable debug logging")
 
 	Debug = log.New(ioutil.Discard, "", 0)
@@ -64,7 +64,12 @@ func LogInit() {
 	reopen(1, stdoutLog)
 	reopen(2, stderrLog)
 
-	if debugFlag {
+	SetDebug(debugFlag)
+}
+
+func SetDebug(enabled bool) {
+	if enabled {
+		debugFlag = true
 		Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
 		Debug.Println("---- debug mode ----")
 	}
