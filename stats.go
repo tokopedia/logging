@@ -18,6 +18,7 @@ const (
 // of the server. The stats themselves are declared using the "expvar" package
 // to use this function, just before starting your listeners, create a goroutine like this
 // go logging.StatsLog()
+
 func StatsLogInterval(seconds int, compact bool) {
 
 	// If we are running in debug mode, do not clog the screen
@@ -53,4 +54,8 @@ func StatsLogInterval(seconds int, compact bool) {
 
 func StatsLog() {
 	StatsLogInterval(1, false)
+}
+
+func StatsLog() {
+	StatsLogInterval(1)
 }

@@ -2,7 +2,6 @@ package logging
 
 import (
 	gcfg "gopkg.in/gcfg.v1"
-	"log"
 	"os"
 )
 
@@ -20,7 +19,7 @@ func ReadModuleConfig(cfg interface{}, path string, module string) bool {
 		debug("read config from ", fname)
 		return true
 	}
-	log.Println(err)
+	debug(err)
 	return false
 }
 
