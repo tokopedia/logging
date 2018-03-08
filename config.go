@@ -1,8 +1,10 @@
 package logging
 
 import (
-	gcfg "gopkg.in/gcfg.v1"
+	"log"
 	"os"
+
+	gcfg "gopkg.in/gcfg.v1"
 )
 
 func ReadModuleConfig(cfg interface{}, path string, module string) bool {
