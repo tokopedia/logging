@@ -72,6 +72,11 @@ func SetDebug(enabled bool) {
 		debugFlag = true
 		Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
 		Debug.Println("---- debug mode ----")
+	} else {
+		debugFlag = false
+		infoFile, _ := os.OpenFile("/dev/null", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		Debug = log.New(infoFile, "", 0)
+		Debug.Println("---- undebug mode ----")
 	}
 }
 
