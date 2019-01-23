@@ -72,6 +72,10 @@ func SetDebug(enabled bool) {
 		debugFlag = true
 		Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
 		Debug.Println("---- debug mode ----")
+	} else {
+		debugFlag = false
+		Debug = log.New(ioutil.Discard, "", 0)
+		Debug.Println("---- undebug mode ----")
 	}
 }
 
