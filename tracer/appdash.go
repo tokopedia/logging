@@ -13,7 +13,7 @@ import (
 	appdashot "sourcegraph.com/sourcegraph/appdash/opentracing"
 	"sourcegraph.com/sourcegraph/appdash/traceapp"
 
-	"gopkg.in/tokopedia/logging.v1"
+	"github.com/Somesh/logging"
 )
 
 func InitAppdash(cfg *Config) {
