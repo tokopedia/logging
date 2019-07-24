@@ -38,7 +38,7 @@ func setupTracer(appdashPort int, ttl int, server string) {
 	}
 
 	collectorPort := l.Addr().String()
-	logging.Debug.Println("collector listening on", collectorPort)
+	logging.Println("collector listening on", collectorPort)
 
 	cs := appdash.NewServer(l, appdash.NewLocalCollector(store))
 	go cs.Start()
