@@ -14,10 +14,17 @@ type Config struct {
 func Init(tracerCfg *Config) {
 	if tracerCfg.Enabled {
 		// default is appdash
-		if tracerCfg.Name == "" || tracerCfg.Name == "appdash" {
+		switch name := tracerCfg.Name; name {
+		case "":
 			InitAppdash(tracerCfg)
-		} else {
+		case "appdash":
+			InitAppdash(tracerCfg)
+		case "jaeger":
 			InitJaeger(tracerCfg)
+		case "zipkin":
+			InitZipkin(tracerCfg)
+		default:
+			InitAppdash(tracerCfg)
 		}
 	}
 }
