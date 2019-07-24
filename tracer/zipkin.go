@@ -92,7 +92,7 @@ func InitZipkin(tcfg *Config) {
 		zipkin.TraceID128Bit(true),
 	)
 	if err != nil {
-		fmt.Printf("Could not initialise Zipkin tracer: %+v\n", err)
+		log.Printf("Could not initialise Zipkin tracer: %+v\n", err)
 		return
 	}
 
