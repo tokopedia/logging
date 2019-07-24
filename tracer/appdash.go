@@ -12,10 +12,12 @@ import (
 	"sourcegraph.com/sourcegraph/appdash"
 	appdashot "sourcegraph.com/sourcegraph/appdash/opentracing"
 	"sourcegraph.com/sourcegraph/appdash/traceapp"
+
+	"gopkg.in/tokopedia/logging.v1"
 )
 
 func InitAppdash(cfg *Config) {
-	log.Println("starting tracer on ", cfg.Port)
+	logging.Debug.Println("starting tracer on ", cfg.Port)
 	go setupTracer(cfg.Port, cfg.TTL, cfg.ServerName)
 }
 
@@ -36,7 +38,7 @@ func setupTracer(appdashPort int, ttl int, server string) {
 	}
 
 	collectorPort := l.Addr().String()
-	log.Println("collector listening on", collectorPort)
+	logging.Println("collector listening on", collectorPort)
 
 	cs := appdash.NewServer(l, appdash.NewLocalCollector(store))
 	go cs.Start()

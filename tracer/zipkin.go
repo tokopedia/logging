@@ -2,14 +2,15 @@ package tracer
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path"
 	"strings"
 
+	kitlog "github.com/go-kit/kit/log"
 	"github.com/opentracing/opentracing-go"
-
-	"github.com/go-kit/kit/log"
 	zipkin "github.com/openzipkin/zipkin-go-opentracing"
+	"gopkg.in/tokopedia/logging.v1"
 )
 
 // References
@@ -63,17 +64,17 @@ func InitZipkin(tcfg *Config) {
 	} else {
 		collector, err = zipkin.NewKafkaCollector(
 			strings.Split("127.0.0.1:9092", ","), // default kafka port
-			zipkin.KafkaLogger(log.NewNopLogger()),
+			zipkin.KafkaLogger(kitlog.NewNopLogger()),
 		)
 		logText = logText + " Kafka"
 	}
 
 	if err != nil {
-		fmt.Println("err", "unable to create collector", "fatal", err)
+		log.Println("err", "unable to create collector", "fatal", err)
 		return
 	}
 
-	fmt.Println(logText)
+	logging.Debug.Println(logText)
 	var hostPort string
 	if tcfg.ServerName == "" {
 		hostPort = fmt.Sprintf("127.0.0.1:%d", tcfg.Port)
