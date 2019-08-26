@@ -75,7 +75,7 @@ func LogInit() {
 func SetDebug(enabled bool) {
 	if enabled {
 		debugFlag = true
-		if filename := os.Getenv("Debug_Log"); filename != "" {
+		if filename := os.Getenv("DEBUG_LOG"); filename != "" {
 			file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 			if err != nil {
 				log.Fatalln("Failed to open log file :", err)
