@@ -15,6 +15,10 @@ import (
 
 var stdoutLog string
 var stderrLog string
+
+// separating debug log into a specific file
+var debugLog string
+
 var debugFlag bool
 var versionFlag bool
 
@@ -28,6 +32,7 @@ var Debug *log.Logger
 func init() {
 	flag.StringVar(&stdoutLog, "l", "", "log file for stdout")
 	flag.StringVar(&stderrLog, "e", "", "log file for stderr")
+	flag.StringVar(&debugLog, "d", "", "log file for debug") // only if want to use debugLog
 	flag.BoolVar(&versionFlag, "version", false, "binary version")
 	flag.BoolVar(&debugFlag, "debug", false, "enable debug logging")
 
@@ -70,7 +75,15 @@ func LogInit() {
 func SetDebug(enabled bool) {
 	if enabled {
 		debugFlag = true
-		Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
+		if filename := os.Getenv("Debug_Log"); filename != "" {
+			file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+			if err != nil {
+				log.Fatalln("Failed to open log file :", err)
+			}
+			Debug = log.New(file, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
+		} else {
+			Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
+		}
 		Debug.Println("---- debug mode ----")
 	}
 }
