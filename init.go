@@ -16,7 +16,7 @@ import (
 var stdoutLog string
 var stderrLog string
 
-// separating debug log into a specific file
+// separating debug log into a specific file to ease monitoring process
 var debugLog string
 
 var debugFlag bool
@@ -32,7 +32,7 @@ var Debug *log.Logger
 func init() {
 	flag.StringVar(&stdoutLog, "l", "", "log file for stdout")
 	flag.StringVar(&stderrLog, "e", "", "log file for stderr")
-	flag.StringVar(&debugLog, "d", "", "log file for debug") // only if want to use debugLog
+	flag.StringVar(&debugLog, "d", "", "log file for debug") // only if to use debugLog
 	flag.BoolVar(&versionFlag, "version", false, "binary version")
 	flag.BoolVar(&debugFlag, "debug", false, "enable debug logging")
 
@@ -75,14 +75,10 @@ func LogInit() {
 func SetDebug(enabled bool) {
 	if enabled {
 		debugFlag = true
-		if filename := os.Getenv("DEBUG_LOG"); filename != "" {
-			file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-			if err != nil {
-				log.Fatalln("Failed to open log file :", err)
-			}
-			Debug = log.New(file, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
-		} else {
+		if debugLog == "" {
 			Debug = log.New(os.Stdout, "debug:", log.Ldate|log.Ltime|log.Lshortfile)
+		} else {
+			Debug = log.New(reopen(0, debugLog), "debug:", log.Ldate|log.Ltime|log.Lshortfile)
 		}
 		Debug.Println("---- debug mode ----")
 	}
@@ -93,9 +89,9 @@ func IsDebug() bool {
 	return debugFlag
 }
 
-func reopen(fd int, filename string) {
+func reopen(fd int, filename string) *os.File {
 	if filename == "" {
-		return
+		return nil
 	}
 
 	logFile, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
@@ -105,7 +101,9 @@ func reopen(fd int, filename string) {
 		os.Exit(2)
 	}
 
-	if err = syscall.Dup2(int(logFile.Fd()), fd); err != nil {
+	if err = syscall.Dup2(int(logFile.Fd()), fd); err != nil && fd != 0 {
 		log.Println("Failed to dup", filename)
 	}
+
+	return logFile
 }
