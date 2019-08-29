@@ -1,4 +1,4 @@
-// The logging package provides common functionality as log rotation, conditional debug logging etc.
+// Package logging provides common functionality as log rotation, conditional debug logging etc.
 // To initialize this package, just import it as
 // import "gopkg.in/tokopedia/logging.v1
 package logging
