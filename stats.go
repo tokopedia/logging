@@ -10,15 +10,15 @@ import (
 	"time"
 )
 
+// Consts
 const (
 	StatsPrefix = "rps"
 )
 
-// By using StatsLog, you can print stats on stdout every second, which is sometimes handy to check the state
+// StatsLogInterval By using StatsLog, you can print stats on stdout every second, which is sometimes handy to check the state
 // of the server. The stats themselves are declared using the "expvar" package
 // to use this function, just before starting your listeners, create a goroutine like this
 // go logging.StatsLog()
-
 func StatsLogInterval(seconds int, compact bool) {
 
 	// If we are running in debug mode, do not clog the screen
@@ -32,7 +32,7 @@ func StatsLogInterval(seconds int, compact bool) {
 
 	sleepTime := time.Duration(seconds) * time.Second
 
-	for _ = range time.Tick(sleepTime) {
+	for range time.Tick(sleepTime) {
 		var buffer bytes.Buffer
 		expvar.Do(func(k expvar.KeyValue) {
 			// reset stats every nseconds
@@ -52,6 +52,7 @@ func StatsLogInterval(seconds int, compact bool) {
 	}
 }
 
+// StatsLog StatsLog
 func StatsLog() {
 	StatsLogInterval(1, false)
 }

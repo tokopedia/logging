@@ -1,11 +1,13 @@
 package logging
 
 import (
-	gcfg "gopkg.in/gcfg.v1"
-	"os"
 	"log"
+	"os"
+
+	gcfg "gopkg.in/gcfg.v1"
 )
 
+// ReadModuleConfig ReadModuleConfig
 func ReadModuleConfig(cfg interface{}, path string, module string) bool {
 	environ := os.Getenv("TKPENV")
 	if environ == "" {
@@ -24,16 +26,17 @@ func ReadModuleConfig(cfg interface{}, path string, module string) bool {
 	return false
 }
 
+// MustReadModuleConfig MustReadModuleConfig
 func MustReadModuleConfig(cfg interface{}, paths []string, module string) {
 	res := false
 	for _, path := range paths {
 		res = ReadModuleConfig(cfg, path, module)
-		if res == true {
+		if res {
 			break
 		}
 	}
 
-	if res == false {
+	if !res {
 		log.Fatalln("couldn't read config for ", os.Getenv("TKPENV"))
 	}
 }
