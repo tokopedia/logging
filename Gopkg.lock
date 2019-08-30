@@ -2,152 +2,418 @@
 
 
 [[projects]]
+  digest = "1:b6526fa4c07838585a136c1a0d897daf598a20412cb3b933d340b8657b283101"
+  name = "github.com/DataDog/zstd"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2347a397da4ee9c6b8226d4aff82c302d0e52773"
+  version = "v1.4.1"
+
+[[projects]]
+  digest = "1:eb44ca0314e275df1bf81bdc59fe1a122186d24f172be84077b40d34d93c6f56"
+  name = "github.com/Shopify/sarama"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "46c83074a05474240f9620fb7c70fb0d80ca401a"
+  version = "v1.23.1"
+
+[[projects]]
+  digest = "1:b39cf81d5f440b9c0757a25058432d33af867e5201109bf53621356d9dab4b73"
   name = "github.com/apache/thrift"
   packages = ["lib/go/thrift"]
-  revision = "b2a4d4ae21c789b689dd162deb819665567f481c"
-  version = "0.10.0"
+  pruneopts = "UT"
+  revision = "384647d290e2e4a55a14b1b7ef1b7e66293a2c33"
+  version = "v0.12.0"
+
+[[projects]]
+  digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  pruneopts = "UT"
+  revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+  version = "v1.1.1"
+
+[[projects]]
+  digest = "1:1f0c7ab489b407a7f8f9ad16c25a504d28ab461517a971d341388a56156c1bd7"
+  name = "github.com/eapache/go-resiliency"
+  packages = ["breaker"]
+  pruneopts = "UT"
+  revision = "5efd2ed019fd331ec2defc6f3bd98882f1e3e636"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
-  name = "github.com/codahale/hdrhistogram"
+  digest = "1:79f16588b5576b1b3cd90e48d2374cc9a1a8776862d28d8fd0f23b0e15534967"
+  name = "github.com/eapache/go-xerial-snappy"
   packages = ["."]
-  revision = "3a0bb77429bd3a61596f5e8a3172445844342120"
+  pruneopts = "UT"
+  revision = "776d5712da21bc4762676d614db1d8a64f4238b0"
 
 [[projects]]
+  digest = "1:444b82bfe35c83bbcaf84e310fb81a1f9ece03edfed586483c869e2c046aef69"
+  name = "github.com/eapache/queue"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "44cc805cf13205b55f69e14bcb69867d1ae92f98"
+  version = "v1.1.0"
+
+[[projects]]
+  digest = "1:ab3cd0b7271b473b0a90bb9ba3f03958f134bca81390d20071a03ffd7df8ef79"
   name = "github.com/go-kit/kit"
   packages = ["log"]
+  pruneopts = "UT"
   revision = "150a65a7ec6156b4b640c1fd55f26fd3d475d656"
   version = "v0.9.0"
 
 [[projects]]
+  digest = "1:4062bc6de62d73e2be342243cf138cf499b34d558876db8d9430e2149388a4d8"
   name = "github.com/go-logfmt/logfmt"
   packages = ["."]
+  pruneopts = "UT"
   revision = "07c9b44f60d7ffdfb7d8efe1ad539965737836dc"
   version = "v0.4.0"
 
 [[projects]]
+  digest = "1:760b2447d30444b6c2da7f77b677921f095fe19e6ed423b2edc1cd47a8507789"
   name = "github.com/gogo/protobuf"
-  packages = ["io","proto"]
-  revision = "1adfc126b41513cc696b209667c8656ea7aac67c"
+  packages = [
+    "io",
+    "proto",
+  ]
+  pruneopts = "UT"
+  revision = "ba06b47c162d49f2af050fb4c75bcbc86a159d5c"
+  version = "v1.2.1"
+
+[[projects]]
+  digest = "1:e4f5819333ac698d294fe04dbf640f84719658d5c7ce195b10060cc37292ce79"
+  name = "github.com/golang/snappy"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2a8bb927dd31d8daada140a5d09578521ce5c36a"
+  version = "v0.0.1"
+
+[[projects]]
+  digest = "1:cbec35fe4d5a4fba369a656a8cd65e244ea2c743007d8f6c1ccb132acf9d1296"
+  name = "github.com/gorilla/mux"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "00bdffe0f3c77e27d2cf6f5c70232a2d3e4d9c15"
+  version = "v1.7.3"
+
+[[projects]]
+  digest = "1:f14364057165381ea296e49f8870a9ffce2b8a95e34d6ae06c759106aaef428c"
+  name = "github.com/hashicorp/go-uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4f571afc59f3043a65f8fe6bf46d887b10a01d43"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:ae221758bdddd57f5c76f4ee5e4110af32ee62583c46299094697f8f127e63da"
+  name = "github.com/jcmturner/gofork"
+  packages = [
+    "encoding/asn1",
+    "x/crypto/pbkdf2",
+  ]
+  pruneopts = "UT"
+  revision = "dc7c13fece037a4a36e2b3c69db4991498d30692"
   version = "v1.0.0"
 
 [[projects]]
-  name = "github.com/gorilla/context"
-  packages = ["."]
-  revision = "1ea25387ff6f684839d82767c1733ff4d4d15d0a"
-  version = "v1.1"
-
-[[projects]]
-  name = "github.com/gorilla/mux"
-  packages = ["."]
-  revision = "53c1911da2b537f792e7cafcb446b05ffe33b996"
-  version = "v1.6.1"
-
-[[projects]]
   branch = "master"
+  digest = "1:a64e323dc06b73892e5bb5d040ced475c4645d456038333883f58934abbf6f72"
   name = "github.com/kr/logfmt"
   packages = ["."]
+  pruneopts = "UT"
   revision = "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
 
 [[projects]]
   branch = "master"
+  digest = "1:2da0e5077ed40453dc281b9a2428d84cf6ad14063aed189f6296ca5dd25cf13d"
   name = "github.com/opentracing-contrib/go-observer"
   packages = ["."]
+  pruneopts = "UT"
   revision = "a52f2342449246d5bcc273e65cbdcfa5f7d6c63c"
 
 [[projects]]
+  digest = "1:d07bd28263c09c5d7f6502e8ddac63e027eca0eafcd07632790d958b50360317"
   name = "github.com/opentracing/basictracer-go"
-  packages = [".","wire"]
+  packages = [
+    ".",
+    "wire",
+  ]
+  pruneopts = "UT"
   revision = "1b32af207119a14b1b231d451df3ed04a72efebf"
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:11e62d6050198055e6cd87ed57e5d8c669e84f839c16e16f192374d913d1a70d"
   name = "github.com/opentracing/opentracing-go"
-  packages = [".","ext","log"]
-  revision = "1949ddbfd147afd4d964a9f00b24eb291e0e7c38"
-  version = "v1.0.2"
+  packages = [
+    ".",
+    "ext",
+    "log",
+  ]
+  pruneopts = "UT"
+  revision = "659c90643e714681897ec2521c60567dd21da733"
+  version = "v1.1.0"
 
 [[projects]]
-  name = "github.com/openzipkin/zipkin-go"
-  packages = [".","idgenerator","model","propagation","propagation/b3","reporter"]
-  revision = "1277a5f30075b9c13d37775aed4f0f3b44d1a710"
-  version = "v0.2.0"
-
-[[projects]]
-  name = "github.com/openzipkin/zipkin-go-opentracing"
-  packages = ["."]
+  digest = "1:6e163302a01432aa2360fcf73fba47602871dbdd7ae903af53a845e4fc94ad30"
+  name = "github.com/openzipkin-contrib/zipkin-go-opentracing"
+  packages = [
+    "flag",
+    "thrift/gen-go/scribe",
+    "thrift/gen-go/zipkincore",
+    "types",
+    "wire",
+  ]
+  pruneopts = "UT"
   revision = "f0f479ad013a498e4cbfb369414e5d3880903779"
   version = "v0.3.5"
 
 [[projects]]
+  digest = "1:cf2688ca56a8f2d064e1eb28a8a00563f69dd97b27e2cf2c929fa5dd55ed0c01"
+  name = "github.com/openzipkin/zipkin-go-opentracing"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f0f479ad013a498e4cbfb369414e5d3880903779"
+  version = "v0.3.5"
+
+[[projects]]
+  digest = "1:b5e6db1f0095a7427712ba7f5890d6c0cb6b61d6f9d76bc5a4e3d2344461e652"
+  name = "github.com/pierrec/lz4"
+  packages = [
+    ".",
+    "internal/xxh32",
+  ]
+  pruneopts = "UT"
+  revision = "8ef35db8296124c4969aab929c16c91c3cb2c8a0"
+  version = "v2.2.6"
+
+[[projects]]
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
+
+[[projects]]
   branch = "master"
+  digest = "1:5bbebe8ac19ecb6c87790a89faa20566e38ed0d6494a1d14c4f5b05d9ce2436c"
+  name = "github.com/rcrowley/go-metrics"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "cac0b30c2563378d434b5af411844adff8e32960"
+
+[[projects]]
+  branch = "master"
+  digest = "1:68cecd4c1137f77dfa2db1f13a0ceef2b5606d6b69d66fa69f7df1b2f2fe9afc"
   name = "github.com/shurcooL/httpfs"
   packages = ["vfsutil"]
-  revision = "809beceb23714880abc4a382a00c05f89d13b1cc"
+  pruneopts = "UT"
+  revision = "8d4bc4ba774931155e6cd5ef6098cb038dd45135"
 
 [[projects]]
   branch = "master"
+  digest = "1:98450c86949b8cdc4637b80c1c686ca955e503d3fbae9296d1f49c532895d281"
   name = "github.com/shurcooL/vfsgen"
   packages = ["."]
-  revision = "ffb13db8def02f545acc58bd288ec6057c2bbfb9"
+  pruneopts = "UT"
+  revision = "6a9ea43bcacdf716a5c1b38efff722c07adf0069"
 
 [[projects]]
+  digest = "1:3b0ac1ac6f703e6d43f4e29c97da2c9e34465c66e2e19f9828e9841d1c9279a4"
   name = "github.com/uber/jaeger-client-go"
-  packages = [".","config","internal/baggage","internal/baggage/remote","internal/spanlog","internal/throttler","log","rpcmetrics","thrift-gen/agent","thrift-gen/baggage","thrift-gen/jaeger","thrift-gen/sampling","thrift-gen/zipkincore","utils"]
-  revision = "c107110d057826281414cb964f167bce5be17588"
-  version = "v2.12.0"
+  packages = [
+    ".",
+    "config",
+    "internal/baggage",
+    "internal/baggage/remote",
+    "internal/spanlog",
+    "internal/throttler",
+    "internal/throttler/remote",
+    "log",
+    "rpcmetrics",
+    "thrift",
+    "thrift-gen/agent",
+    "thrift-gen/baggage",
+    "thrift-gen/jaeger",
+    "thrift-gen/sampling",
+    "thrift-gen/zipkincore",
+    "transport",
+    "utils",
+  ]
+  pruneopts = "UT"
+  revision = "2f47546e3facd43297739439600bcf43f44cce5d"
+  version = "v2.16.0"
 
 [[projects]]
+  digest = "1:c9d69a04f7fa171f50360bbcc32196b4de8ab8837ef772f6302d0140a1e3e7f6"
   name = "github.com/uber/jaeger-lib"
   packages = ["metrics"]
-  revision = "4267858c0679cd4e47cefed8d7f70fd386cfb567"
-  version = "v1.4.0"
+  pruneopts = "UT"
+  revision = "0e30338a695636fe5bcf7301e8030ce8dd2a8530"
+  version = "v2.0.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:04b43fe96213ea69cfa6e6b8be218a43a375035ea09d9bdda9fed2691f5a7e76"
+  name = "golang.org/x/crypto"
+  packages = [
+    "md4",
+    "pbkdf2",
+  ]
+  pruneopts = "UT"
+  revision = "9756ffdc24725223350eb3266ffb92590d28f278"
+
+[[projects]]
+  branch = "master"
+  digest = "1:3e0062766e6b0bcfe1ba1ed1d3f08a8e1e99cd5831426e2596dc9537d28f2adb"
   name = "golang.org/x/net"
-  packages = ["context"]
-  revision = "b68f30494add4df6bd8ef5e82803f308e7f7c59c"
+  packages = [
+    "internal/socks",
+    "proxy",
+  ]
+  pruneopts = "UT"
+  revision = "ba9fcec4b297b415637633c5a6e8fa592e4a16c3"
 
 [[projects]]
-  name = "google.golang.org/grpc"
-  packages = ["metadata"]
-  revision = "6eaf6f47437a6b4e2153a190160ef39a92c7eceb"
-  version = "v1.23.0"
-
-[[projects]]
+  digest = "1:38cb4759428493e0b02eade2f8d2920eb55a8fb35acb45de3247f0fbeab81b78"
   name = "gopkg.in/gcfg.v1"
-  packages = [".","scanner","token","types"]
-  revision = "f02745ab41b9d54a9d495f3356e76f7396da404c"
-  version = "v1.2.2"
+  packages = [
+    ".",
+    "scanner",
+    "token",
+    "types",
+  ]
+  pruneopts = "UT"
+  revision = "61b2c08bc8f6068f7c5ca684372f9a6cb1c45ebe"
+  version = "v1.2.3"
+
+[[projects]]
+  digest = "1:c902038ee2d6f964d3b9f2c718126571410c5d81251cbab9fe58abd37803513c"
+  name = "gopkg.in/jcmturner/aescts.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f6abebb3171c4c1b1fea279cb7c7325020a26290"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:a1a3e185c03d79a7452d5d5b4c91be4cc433f55e6ed3a35233d852c966e39013"
+  name = "gopkg.in/jcmturner/dnsutils.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "13eeb8d49ffb74d7a75784c35e4d900607a3943c"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:dc01a587d07be012625ba63df6d4224ae6d7a83e79bfebde6d987c10538d66dd"
+  name = "gopkg.in/jcmturner/gokrb5.v7"
+  packages = [
+    "asn1tools",
+    "client",
+    "config",
+    "credentials",
+    "crypto",
+    "crypto/common",
+    "crypto/etype",
+    "crypto/rfc3961",
+    "crypto/rfc3962",
+    "crypto/rfc4757",
+    "crypto/rfc8009",
+    "gssapi",
+    "iana",
+    "iana/addrtype",
+    "iana/adtype",
+    "iana/asnAppTag",
+    "iana/chksumtype",
+    "iana/errorcode",
+    "iana/etypeID",
+    "iana/flags",
+    "iana/keyusage",
+    "iana/msgtype",
+    "iana/nametype",
+    "iana/patype",
+    "kadmin",
+    "keytab",
+    "krberror",
+    "messages",
+    "pac",
+    "types",
+  ]
+  pruneopts = "UT"
+  revision = "363118e62befa8a14ff01031c025026077fe5d6d"
+  version = "v7.3.0"
+
+[[projects]]
+  digest = "1:0f16d9c577198e3b8d3209f5a89aabe679525b2aba2a7548714e973035c0e232"
+  name = "gopkg.in/jcmturner/rpc.v1"
+  packages = [
+    "mstypes",
+    "ndr",
+  ]
+  pruneopts = "UT"
+  revision = "99a8ce2fbf8b8087b6ed12a37c61b10f04070043"
+  version = "v1.1.0"
 
 [[projects]]
   branch = "v1.1"
+  digest = "1:febf85c0e3440ad49e835b375b6b1a376420366a9e70d2786957b9d4296ece1c"
   name = "gopkg.in/tokopedia/logging.v1"
   packages = ["."]
-  revision = "d9a7fa4e4ea2a116d7655576ea7154ecd39ec662"
+  pruneopts = "UT"
+  revision = "ed577bc368d99af35f22815e8825f3cc7d8e7cf5"
 
 [[projects]]
+  digest = "1:78d374b493e747afa9fbb2119687e3740a7fb8d0ebabddfef0a012593aaecbb3"
   name = "gopkg.in/warnings.v0"
   packages = ["."]
+  pruneopts = "UT"
   revision = "ec4a0fea49c7b46c2aeb0b51aac55779c607e52b"
   version = "v0.1.2"
 
 [[projects]]
   branch = "master"
+  digest = "1:a748c4782ef675b6bd9929c9c9d820d111bcb3c9cbd4706c057995081a7dcaf4"
   name = "sourcegraph.com/sourcegraph/appdash"
-  packages = [".","httptrace","internal/wire","opentracing","sqltrace","traceapp","traceapp/tmpl"]
-  revision = "2cc67fd647551af94593ecaaa89fe4e5b2940a3e"
+  packages = [
+    ".",
+    "httptrace",
+    "internal/wire",
+    "opentracing",
+    "sqltrace",
+    "traceapp",
+    "traceapp/tmpl",
+  ]
+  pruneopts = "UT"
+  revision = "ebfcffb1b5c00031ce797183546746715a3cfe87"
 
 [[projects]]
   branch = "master"
+  digest = "1:8e0a2957fe342f22d70a543c3fcdf390f7627419c3d82d87ab4fd715a9ef5716"
   name = "sourcegraph.com/sourcegraph/appdash-data"
   packages = ["."]
+  pruneopts = "UT"
   revision = "73f23eafcf67cad684fba328dd545a116ac273ff"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "24deee2406c05ee3d562893678b0544d2ecf52917c940a68dfef47530ff3ca8d"
+  input-imports = [
+    "github.com/go-kit/kit/log",
+    "github.com/opentracing/opentracing-go",
+    "github.com/openzipkin/zipkin-go-opentracing",
+    "github.com/uber/jaeger-client-go",
+    "github.com/uber/jaeger-client-go/config",
+    "github.com/uber/jaeger-client-go/log",
+    "github.com/uber/jaeger-lib/metrics",
+    "gopkg.in/gcfg.v1",
+    "gopkg.in/tokopedia/logging.v1",
+    "sourcegraph.com/sourcegraph/appdash",
+    "sourcegraph.com/sourcegraph/appdash/opentracing",
+    "sourcegraph.com/sourcegraph/appdash/traceapp",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
