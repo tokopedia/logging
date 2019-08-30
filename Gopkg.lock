@@ -14,11 +14,20 @@
   revision = "3a0bb77429bd3a61596f5e8a3172445844342120"
 
 [[projects]]
+  name = "github.com/go-kit/kit"
+  packages = ["log"]
+  revision = "150a65a7ec6156b4b640c1fd55f26fd3d475d656"
+  version = "v0.9.0"
+
+[[projects]]
+  name = "github.com/go-logfmt/logfmt"
+  packages = ["."]
+  revision = "07c9b44f60d7ffdfb7d8efe1ad539965737836dc"
+  version = "v0.4.0"
+
+[[projects]]
   name = "github.com/gogo/protobuf"
-  packages = [
-    "io",
-    "proto"
-  ]
+  packages = ["io","proto"]
   revision = "1adfc126b41513cc696b209667c8656ea7aac67c"
   version = "v1.0.0"
 
@@ -35,23 +44,40 @@
   version = "v1.6.1"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/kr/logfmt"
+  packages = ["."]
+  revision = "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/opentracing-contrib/go-observer"
+  packages = ["."]
+  revision = "a52f2342449246d5bcc273e65cbdcfa5f7d6c63c"
+
+[[projects]]
   name = "github.com/opentracing/basictracer-go"
-  packages = [
-    ".",
-    "wire"
-  ]
+  packages = [".","wire"]
   revision = "1b32af207119a14b1b231d451df3ed04a72efebf"
   version = "v1.0.0"
 
 [[projects]]
   name = "github.com/opentracing/opentracing-go"
-  packages = [
-    ".",
-    "ext",
-    "log"
-  ]
+  packages = [".","ext","log"]
   revision = "1949ddbfd147afd4d964a9f00b24eb291e0e7c38"
   version = "v1.0.2"
+
+[[projects]]
+  name = "github.com/openzipkin/zipkin-go"
+  packages = [".","idgenerator","model","propagation","propagation/b3","reporter"]
+  revision = "1277a5f30075b9c13d37775aed4f0f3b44d1a710"
+  version = "v0.2.0"
+
+[[projects]]
+  name = "github.com/openzipkin/zipkin-go-opentracing"
+  packages = ["."]
+  revision = "f0f479ad013a498e4cbfb369414e5d3880903779"
+  version = "v0.3.5"
 
 [[projects]]
   branch = "master"
@@ -67,22 +93,7 @@
 
 [[projects]]
   name = "github.com/uber/jaeger-client-go"
-  packages = [
-    ".",
-    "config",
-    "internal/baggage",
-    "internal/baggage/remote",
-    "internal/spanlog",
-    "internal/throttler",
-    "log",
-    "rpcmetrics",
-    "thrift-gen/agent",
-    "thrift-gen/baggage",
-    "thrift-gen/jaeger",
-    "thrift-gen/sampling",
-    "thrift-gen/zipkincore",
-    "utils"
-  ]
+  packages = [".","config","internal/baggage","internal/baggage/remote","internal/spanlog","internal/throttler","log","rpcmetrics","thrift-gen/agent","thrift-gen/baggage","thrift-gen/jaeger","thrift-gen/sampling","thrift-gen/zipkincore","utils"]
   revision = "c107110d057826281414cb964f167bce5be17588"
   version = "v2.12.0"
 
@@ -99,13 +110,14 @@
   revision = "b68f30494add4df6bd8ef5e82803f308e7f7c59c"
 
 [[projects]]
+  name = "google.golang.org/grpc"
+  packages = ["metadata"]
+  revision = "6eaf6f47437a6b4e2153a190160ef39a92c7eceb"
+  version = "v1.23.0"
+
+[[projects]]
   name = "gopkg.in/gcfg.v1"
-  packages = [
-    ".",
-    "scanner",
-    "token",
-    "types"
-  ]
+  packages = [".","scanner","token","types"]
   revision = "f02745ab41b9d54a9d495f3356e76f7396da404c"
   version = "v1.2.2"
 
@@ -124,15 +136,7 @@
 [[projects]]
   branch = "master"
   name = "sourcegraph.com/sourcegraph/appdash"
-  packages = [
-    ".",
-    "httptrace",
-    "internal/wire",
-    "opentracing",
-    "sqltrace",
-    "traceapp",
-    "traceapp/tmpl"
-  ]
+  packages = [".","httptrace","internal/wire","opentracing","sqltrace","traceapp","traceapp/tmpl"]
   revision = "2cc67fd647551af94593ecaaa89fe4e5b2940a3e"
 
 [[projects]]
@@ -144,6 +148,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ee19a2b30efb818a486ad67da4f1f53d52080e051947c703835c14064adc13ee"
+  inputs-digest = "24deee2406c05ee3d562893678b0544d2ecf52917c940a68dfef47530ff3ca8d"
   solver-name = "gps-cdcl"
   solver-version = 1

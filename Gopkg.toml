@@ -49,6 +49,10 @@
   branch = "master"
   name = "sourcegraph.com/sourcegraph/appdash"
 
+[[constraint]]
+  name = "github.com/openzipkin/zipkin-go-opentracing"
+  version = "v0.3.5"
+
 [prune]
   go-tests = true
   unused-packages = true
