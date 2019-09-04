@@ -57,7 +57,7 @@ func sigHandler(c chan os.Signal) {
 // LogInit App must call LogInit once to setup log redirection
 func LogInit() {
 
-	if versionFlag == true {
+	if versionFlag {
 		fmt.Println(appVersion())
 		os.Exit(0)
 	}
@@ -66,8 +66,8 @@ func LogInit() {
 		log.Println("Log Init: using ", stdoutLog, stderrLog)
 	}
 
-	reopen(1, stdoutLog)
-	reopen(2, stderrLog)
+	_, _ = reopen(1, stdoutLog)
+	_, _ = reopen(2, stderrLog)
 
 	SetDebug(debugFlag)
 }

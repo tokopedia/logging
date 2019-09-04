@@ -47,7 +47,7 @@ func setupTracer(appdashPort int, ttl int, server string) {
 		server = fmt.Sprintf("http://localhost:%d", appdashPort)
 	}
 
-	appdashURL, err := url.Parse(server)
+	appdashURL, _ := url.Parse(server)
 	tapp, err := traceapp.New(nil, appdashURL)
 	if err != nil {
 		log.Fatal(err)
