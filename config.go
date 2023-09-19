@@ -14,7 +14,7 @@ func ReadModuleConfig(cfg interface{}, path string, module string) bool {
 		environ = "development"
 	}
 
-	debug := Debug.Println
+	debug := log.Println
 
 	fname := path + "/" + module + "." + environ + ".ini"
 	err := gcfg.ReadFileInto(cfg, fname)
